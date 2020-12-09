@@ -1,20 +1,17 @@
-refs: https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
 version: 0.2
 
-run-as: uchida
 
 #env:
 
 phases:
   build:
     commands:
-      - echo Build started on 'date'
-      - echo start installing packages
-      - sudo apt-get install libsndfile1
-      - pip install pytorch numpy librosa
+      - echo "Build started"
+      - echo "start installing packages"
+      - pip install torch numpy librosa
+      - apt-get install -y libsndfile1
   post_build:
     commands:
-      - echo Build completed on 'date'
       - pwd
       - ls -al
 artifacts:
