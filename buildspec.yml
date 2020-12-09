@@ -8,12 +8,14 @@ phases:
     commands:
       - echo "Build started"
       - echo "start installing packages"
-        #      - cd /root
-        #      - python3 -m pip install torch numpy librosa
-      - pip install torch numpy librosa
+      - mkdir python
+      - cd python
+      - pip install -t ./ torch numpy librosa
+      - cd ../
       - apt-get update
       - apt-get -y upgrade
-      - apt-get install -y libsndfile1
+      - apt-get install -y libsndfile1 zip
+      - zip -r audio.zip python/
   post_build:
     commands:
       - pwd
